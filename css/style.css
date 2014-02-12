@@ -1,0 +1,113 @@
+body{
+	margin: 0px;
+	padding: 0px;	height: auto;
+	background-color: #88CEEA;
+	font-family: sans-serif;
+}
+
+
+h1{
+	padding: 5px;
+	margin-top: 40px;
+	background-color: #FFF;
+	border-bottom: 8px solid #F04C23;
+}
+
+h1 img{
+	margin-left: 80px;
+	padding-top: 5px;
+
+}
+
+h2{
+	margin: 0px;
+	padding: 0px;
+	margin-left: 100px;
+	color: #FFF;
+	font-size: 20px;
+
+}
+
+
+.user{
+	background-color: #FFF;
+	margin-left: 100px;
+	width: 500px;
+	min-height: 170px;
+	margin-top: 20px;
+	padding-top: 15px;
+	padding-left: 20px;
+	background-color: #ddd;
+}
+
+.userphoto{
+	float:left;
+	padding-top: 10px;
+}
+
+.username{
+	padding-top: 5px;
+	margin-left: 10px;
+	float: left;
+	font-weight: bold;
+	line-height: 180%;
+}
+
+.status{
+	font-weight: normal;
+}
+
+.emoji{
+	float: right;
+}
+
+.time{
+	color:#F04C23;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+form{
+	margin: auto;
+	margin-left:10px;
+	float: left;
+}
+
+
+
+button{
+	border:none;
+	background-color: #FFF;
+	margin:0px;
+	padding: 0px;
+	height: 60px;
+	width: 60px;
+	font-size: 16px;
+	margin-right: 5px;
+
+}
+
+button #record,
+#play, #pause{
+	float:left;
+}
+
+button #send{
+	float:right;
+}
+
+.command{
+	float: left;
+	margin-right: 30px;
+	font-weight: bold;
+
+}
+
+button:hover{
+	border: 1px solid #000; 
+}
+
+.awaken{
+	background-color: #D1EEFC;
+	min-height: 140px;
+}

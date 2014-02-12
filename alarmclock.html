@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Social Alarm Clock</title>
+  <meta name="Connected Devices Assignment" content="Social Alarm Clock">
+  <meta author="Maria Paula Saba/ Jess Jiyoung">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+  <script src="script.js"></script>
+
+
+</head>
+
+<body onload = "setup();">
+	<h1><img src="img/logo.png" /></h1>
+		<h2>WAKE UP YOUR FRIENDS!</h2>
+
+		<div class = "user">
+			<img class="userphoto" src="img/users.png"/>
+			<p class="username">USERNAME <span class="status">is sleeping right now. <br/><span class="time">1h and 15 mins</span> left to wake up. </span></p>
+			<img class="emoji" src="img/zzz.png"/>
+			<form>			
+			<p class="command" id="statusMessage">Start recording</p>
+			<button type="button" id="record" onclick = "startRecording(this)"><img src="img/record.png"/></button>
+			<button type="button" id="send" onclick="sendVoice(this);" style="visibility: hidden;"><img src="img/send.png"/></button>
+			</form>
+		</div>		
+
+
+		<div class = "user">
+			<img class="userphoto" src="img/users.png"/>
+			<p class="username">USERNAME <span class="status">is sleeping right now. <br/> <span class="time">25 min</span> left to wake up. </span></p>
+			<img class="emoji" src="img/zzz.png"/>
+			<form>			
+			<p class="command" id="statusMessage">Start recording</p>
+			<button type="button" id="record" onclick = "startRecording(this)"><img src="img/record.png"/></button>
+			<button type="button" id="send" onclick="sendVoice(this);" style="visibility: hidden;"><img src="img/send.png"/></button>
+			</form>
+		</div>	
+
+
+		<div class = "user awaken">
+			<img class="userphoto" src="img/users.png"/>
+			<p class="username">USERNAME <span class="status">is awaken <br/> What about texting or calling?</span>
+				<br/> <span class="time">+1 347 369 0008</span></p>
+			<img class="emoji" src="img/o.o.png"/>
+		</div>	
+
+
+</body>
+</html>
