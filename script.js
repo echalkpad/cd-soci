@@ -1,15 +1,17 @@
 var wakeupList = [
 	{
 		name:"Jess", 
-		wakeupH:"10", 
-		wakeupM:"07",
+		wakeupH:"3", 
+		wakeupM:"20",
+		wakeupP:"PM",
 		status:"sleeping",
 		counter: 0
 	},
 	{
 		name:"Maria", 
-		wakeupH:"12", 
-		wakeupM:"07",
+		wakeupH:"5", 
+		wakeupM:"27",
+		wakeupP:"PM",
 		status:"sleeping",
 		counter: 0
 	},
@@ -65,30 +67,29 @@ function updateTime(){
 
 function checkTime(i)
 {
-if (i<10)
-  {
-  i="0" + i;
-  }
-return i;
+	if (i<10)
+	  {
+	  i="0" + i;
+	  }
+	return i;
 }
 
 function renderFriends(){
 
-	for(var i=0; i<wakeupList.length; i++){
+for(var i=0; i<wakeupList.length; i++){
 
-		var userStatus = document.getElementById("user"+i);
-		var leftH = wakeupList[i].wakeupH - currentH;
-		var leftM = wakeupList[i].wakeupM - currentM;
-		//console.log(userStatus.childNodes);
+	var userStatus = document.getElementById("user"+i);
+	var leftH = wakeupList[i].wakeupH - currentH;
+	var leftM = wakeupList[i].wakeupM - currentM;
+	//console.log(userStatus.childNodes);
 
-		var tempText = "";
+	var tempText = "";
 
-		//console.log(leftM);
+	//console.log(leftM);
 
-	if(wakeupList[i].status === "sleeping"){	
+if(wakeupList[i].status === "sleeping"){	
 
-		userStatus.childNodes[5].innerHTML = '<img class="emoji" src="img/zzz.png"/>';
-		
+	userStatus.childNodes[5].innerHTML = '<img class="emoji" src="img/zzz.png"/>';
 		if(leftH > 0){
 			if(leftM >= 0){
 				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> left to wake up. </span>';
@@ -114,68 +115,34 @@ function renderFriends(){
 		}else{
 
 			if(leftM > 0){
-				leftH = Math.abs(leftH);
-				leftM = Math.abs(leftM);
-				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
+					leftH = Math.abs(leftH);
+					leftM = Math.abs(leftM);
+					tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
 			}else if(leftM < 0){
-				leftH = Math.abs(leftH);
-				leftM = Math.abs(leftM);
-				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
+					leftH = Math.abs(leftH);
+					leftM = Math.abs(leftM);
+					tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
 			}
+
+		}
+	
+}else if(wakeupList[i].status === "awakening"){
+
+			//console.log(userStatus.childNodes);
+
+			if(userStatus.childNodes.length > 7){
+				userStatus.childNodes[7].innerHTML = "";
+			}
+
+			tempText = wakeupList[i].name+'<span class="status"> is awaken <br/> What about texting or calling?</span><br/> <span class="time">+1 347 369 0008</span></p>';
+			userStatus.childNodes[5].src = "img/o.o.png";
+			//console.log(userStatus.childNodes[5]);
 
 		}
 
 	userStatus.childNodes[3].innerHTML = tempText;
 	
 	}
-}
-
-
-/*
-
-
-
-
-
-		if(leftH > 0 && leftM > 0 ){
-			console.log(leftH);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> left to wake up. </span>';
-		}else if(leftH == 0 && leftM > 0){
-			leftM = Math.abs(leftM);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> left to wake up. </span>';
-		}else if(leftH == 0 && leftM < 0){
-			leftM = Math.abs(leftM);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> over to wake up. </span>';
-		}else if(leftH < 0 && leftM < 0){
-			
-			leftH = Math.abs(leftH);
-			leftM = Math.abs(leftM);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
-		}else if(leftH == 0 && leftM == 0){
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">Time to wake up!</span></span>';			
-		}
-
-		//console.log(userStatus.childNodes);
-		
-	}else if(wakeupList[i].status === "awakening"){
-
-		//console.log(userStatus.childNodes);
-
-		if(userStatus.childNodes.length > 7){
-			userStatus.childNodes[7].innerHTML = "";
-		}
-
-		tempText = wakeupList[i].name+'<span class="status"> is awaken <br/> What about texting or calling?</span><br/> <span class="time">+1 347 369 0008</span></p>';
-		userStatus.childNodes[5].src = "img/o.o.png";
-		//console.log(userStatus.childNodes[5]);
-
-	}
-
-	userStatus.childNodes[3].innerHTML = tempText;
-
-	}
-
-	*/	
 
 }
 
