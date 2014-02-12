@@ -2,14 +2,14 @@ var wakeupList = [
 	{
 		name:"Jess", 
 		wakeupH:"10", 
-		wakeupM:"10",
+		wakeupM:"07",
 		status:"sleeping",
 		counter: 0
 	},
 	{
 		name:"Maria", 
-		wakeupH:"10", 
-		wakeupM:"38",
+		wakeupH:"12", 
+		wakeupM:"07",
 		status:"sleeping",
 		counter: 0
 	},
@@ -36,7 +36,7 @@ var currentP = "";
 
 function setup(){
 
-	setInterval(function(){ updateTime();}, 1000);
+	setInterval(function(){ updateTime(); renderFriends();}, 1000);
 	//console.log(tempDate);
 	renderFriends();
 }
@@ -89,13 +89,68 @@ function renderFriends(){
 
 		userStatus.childNodes[5].innerHTML = '<img class="emoji" src="img/zzz.png"/>';
 		
-		if(leftH <= 0 && leftM > 0 ){
-			leftH = Math.abs(leftH);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' mins</span> left to wake up. </span>';
-		}else if(leftH <= 0 && leftM < 0){
+		if(leftH > 0){
+			if(leftM >= 0){
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> left to wake up. </span>';
+			}else if(leftM < 0){
+				leftH = leftH -1;
+				leftM = 60+leftM;
+				leftM = Math.abs(leftM);
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> left to wake up. </span>';
+			}
+
+		}else if(leftH == 0){
+
+			if(leftM > 0){
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> left to wake up. </span>';
+			}else if(leftM < 0){
+				leftM = Math.abs(leftM);
+				leftM = leftM;
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> over to wake up. </span>';
+			}else if(leftM == 0){
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">Time to wake up!</span></span>';
+			}
+
+		}else{
+
+			if(leftM > 0){
+				leftH = Math.abs(leftH);
+				leftM = Math.abs(leftM);
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
+			}else if(leftM < 0){
+				leftH = Math.abs(leftH);
+				leftM = Math.abs(leftM);
+				tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
+			}
+
+		}
+
+	userStatus.childNodes[3].innerHTML = tempText;
+	
+	}
+}
+
+
+/*
+
+
+
+
+
+		if(leftH > 0 && leftM > 0 ){
+			console.log(leftH);
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> left to wake up. </span>';
+		}else if(leftH == 0 && leftM > 0){
+			leftM = Math.abs(leftM);
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> left to wake up. </span>';
+		}else if(leftH == 0 && leftM < 0){
+			leftM = Math.abs(leftM);
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' min</span> over to wake up. </span>';
+		}else if(leftH < 0 && leftM < 0){
+			
 			leftH = Math.abs(leftH);
 			leftM = Math.abs(leftM);
-			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' mins</span> over to wake up. </span>';
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftH+"h and "+leftM+' min</span> over to wake up. </span>';
 		}else if(leftH == 0 && leftM == 0){
 			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">Time to wake up!</span></span>';			
 		}
@@ -118,7 +173,9 @@ function renderFriends(){
 
 	userStatus.childNodes[3].innerHTML = tempText;
 
-	}	
+	}
+
+	*/	
 
 }
 
