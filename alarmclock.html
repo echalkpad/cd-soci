@@ -18,11 +18,11 @@
 
 <body onload = "setup();">
 	<h1><img src="img/logo.png" /></h1>
-		<h2>WAKE UP YOUR FRIENDS!</h2>
+		<h2>WAKE UP YOUR FRIENDS!</h2><h2 id= "clock"></h2>
 
-		<div class = "user">
+		<div class = "user" id = "user0">
 			<img class="userphoto" src="img/users.png"/>
-			<p class="username">USERNAME <span class="status">is sleeping right now. <br/><span class="time">1h and 15 mins</span> left to wake up. </span></p>
+			<p class="username"><span id="name">USERNAME</span><span class="status"> is sleeping right now. <br/><span class="time">1h and 15 mins</span> left to wake up. </span></p>
 			<img class="emoji" src="img/zzz.png"/>
 			<form>			
 			<p class="command" id="statusMessage">Start recording</p>
@@ -32,7 +32,7 @@
 		</div>		
 
 
-		<div class = "user">
+		<div class = "user" id = "user1">
 			<img class="userphoto" src="img/users.png"/>
 			<p class="username">USERNAME <span class="status">is sleeping right now. <br/> <span class="time">25 min</span> left to wake up. </span></p>
 			<img class="emoji" src="img/zzz.png"/>
@@ -44,7 +44,7 @@
 		</div>	
 
 
-		<div class = "user awaken">
+		<div class = "user awaken" id = "user2">
 			<img class="userphoto" src="img/users.png"/>
 			<p class="username">USERNAME <span class="status">is awaken <br/> What about texting or calling?</span>
 				<br/> <span class="time">+1 347 369 0008</span></p>

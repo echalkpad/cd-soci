@@ -1,6 +1,127 @@
+var wakeupList = [
+	{
+		name:"Jess", 
+		wakeupH:"10", 
+		wakeupM:"10",
+		status:"sleeping",
+		counter: 0
+	},
+	{
+		name:"Maria", 
+		wakeupH:"10", 
+		wakeupM:"38",
+		status:"sleeping",
+		counter: 0
+	},
+	{
+		name:"Tom",
+		wakeupH:"9",
+		wakeupM:"30",
+		status:"awakening",
+		counter: 0
+	}			
+];
+
+var tempDate = {
+	name:"", 
+	wakeupH:"", 
+	wakeupM:""
+};
+
+var currentTime = new Date();
+var currentH = currentTime.getHours();
+var currentM = currentTime.getMinutes();
+var currentS = currentTime.getSeconds();
+var currentP = "";
+
 function setup(){
 
+	setInterval(function(){ updateTime();}, 1000);
+	//console.log(tempDate);
+	renderFriends();
 }
+
+function updateTime(){
+
+	currentTime = new Date();
+	currentH = currentTime.getHours();
+	currentM = currentTime.getMinutes();
+	currentS = currentTime.getSeconds();
+	currentP = "";
+
+	currentM = checkTime(currentM);
+	currentS = checkTime(currentS);
+
+	if(currentH > 12){
+		currentH = currentH-12;
+		currentP = "PM";
+	}else{
+		currentP = "AM";
+	}
+	clock.innerHTML= "<span class='time' style='font-size:20px;'>"+currentH+":"+currentM+":"+currentS+currentP+"</span>";
+
+}
+
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+
+function renderFriends(){
+
+	for(var i=0; i<wakeupList.length; i++){
+
+		var userStatus = document.getElementById("user"+i);
+		var leftH = wakeupList[i].wakeupH - currentH;
+		var leftM = wakeupList[i].wakeupM - currentM;
+		//console.log(userStatus.childNodes);
+
+		var tempText = "";
+
+		//console.log(leftM);
+
+	if(wakeupList[i].status === "sleeping"){	
+
+		userStatus.childNodes[5].innerHTML = '<img class="emoji" src="img/zzz.png"/>';
+		
+		if(leftH <= 0 && leftM > 0 ){
+			leftH = Math.abs(leftH);
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' mins</span> left to wake up. </span>';
+		}else if(leftH <= 0 && leftM < 0){
+			leftH = Math.abs(leftH);
+			leftM = Math.abs(leftM);
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">'+leftM+' mins</span> over to wake up. </span>';
+		}else if(leftH == 0 && leftM == 0){
+			tempText = wakeupList[i].name+'<span class="status"> is sleeping right now. <br/><span class="time">Time to wake up!</span></span>';			
+		}
+
+		//console.log(userStatus.childNodes);
+		
+	}else if(wakeupList[i].status === "awakening"){
+
+		//console.log(userStatus.childNodes);
+
+		if(userStatus.childNodes.length > 7){
+			userStatus.childNodes[7].innerHTML = "";
+		}
+
+		tempText = wakeupList[i].name+'<span class="status"> is awaken <br/> What about texting or calling?</span><br/> <span class="time">+1 347 369 0008</span></p>';
+		userStatus.childNodes[5].src = "img/o.o.png";
+		//console.log(userStatus.childNodes[5]);
+
+	}
+
+	userStatus.childNodes[3].innerHTML = tempText;
+
+	}	
+
+}
+
 
 function startRecording(selector){
 
@@ -57,7 +178,7 @@ function sendVoice(selector){
 		selector.parentNode.childNodes[1].innerHTML = "Delivered";
 	}, 2000);
 	setTimeout(function(){ 
-		selector.parentNode.childNodes[1].innerHTML = "Start Recording";
+		selector.parentNode.childNodes[1].innerHTML = "You already recorded";
 		setup();
 	}, 3000);
 
