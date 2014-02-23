@@ -1,0 +1,181 @@
+
+#page-login{
+	display: inline-table;
+
+}
+
+#page-main{
+	display: none;
+}
+
+#page-user{
+	display: none;
+}
+
+.jumbotron{
+	display: inline-block;
+	padding-left: 10px;
+	width: 100%;
+}
+
+ul#emojiList{
+	list-style-type: none;
+	display: list-item;
+	margin: auto;
+	padding: 0px;
+}
+
+ul li{
+	float: left;
+	margin: 30px;
+}
+
+.header {
+	display: block;
+	margin: auto;
+}
+
+.header h2 {
+  float:right;
+}
+
+.tooltip {
+	padding: 5px;
+	opacity: 0.5;
+	border: 1px solid gray;
+	background-color:#FF5930;
+	color: #ffffff;
+}
+
+.description {
+	margin-top: 40px;
+
+}
+
+.buttonbar {
+/*	margin:0px 30px 10px 30px;
+	position:relative;
+	float: right;
+*/	
+	margin: auto;
+	padding: 30px 50px 10px 50px;
+	display: list-item;
+	list-style-type: none;
+
+}
+
+#form-login-user {
+	margin-bottom: 20px;
+}
+
+#login-section-error{
+	margin-top: 10px;
+
+}
+
+#btn-submit{
+	margin-right:3px;
+}
+
+#btn-newuser{
+
+}
+
+
+#btn-addfriend{
+	margin:auto;
+	margin-right:6px;
+	float:right;
+	padding: 17px;
+	font-size: 13px;
+}
+
+#btn-setwakeuptime{
+	margin:auto;
+	margin-right:3px;
+	float:right;
+	padding: 17px;
+	font-size: 13px;
+}
+
+input {
+	margin-top: 10px;
+}
+
+label {
+	float: left;
+	margin: auto;
+}
+
+#form-username {
+	float: left;
+	margin-right: 20px;
+}
+
+#form-password {
+	float: left;
+	margin-right: 20px;
+}
+
+.btn-sm  {
+	margin-top: 9px;
+	margin-right: 10px;
+}
+#user-status-emoji {
+	width: 85px;
+}
+
+.marketing {
+
+	margin-top: 0px;
+}
+.alert {
+	border: 5px inset #FF5930;
+	padding: 10px;
+}
+
+.alert h4 {
+	margin-top: 5px;
+	color: #FF5930;
+}
+
+.leftTime {
+	text-align: right;
+	margin-right: 5px;
+}
+.wakeupTime {
+	text-align: right;
+	margin-right: 5px;
+}
+
+#btn-record {
+	float: left;
+	margin: 5px;
+	margin-top: 20px;
+/*	background-image: url(img/record.png) no-repeat;
+	background-size:70px 70px;*/
+}
+
+#btn-stop {
+	float: left;
+	margin: 5px;
+	margin-top: 20px;
+/*	background-image: url(img/stop.png) no-repeat;
+	background-size:70px 70px;*/
+}
+
+#btn-play {
+	float: left;
+	margin: 5px;
+	margin-top: 20px;
+/*	background-image: url(img/play.png) no-repeat;
+	background-size:70px 70px;*/
+}
+
+#btn-send {
+	float: left;
+	margin: 5px;
+	margin-top: 20px;
+/*	background-image: url(img/send.png) no-repeat;
+	background-size:70px 70px;*/
+}

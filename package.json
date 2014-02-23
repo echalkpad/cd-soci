@@ -1,0 +1,16 @@
+{
+  "name": "socialalarm",
+  "version": "0.4.0",
+  "description" : "A connected device sending and receiving recorded voice alarm.",
+  "keywords": "serial, web-controller, node-serialport",
+  "author":{
+  	"name":"Jess Jiyoung Jung & Maria Paula Saba"
+  },
+  "dependencies": {
+    "express": "3.x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  }
+}

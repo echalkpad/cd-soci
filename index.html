@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Social Alarm Clock</title>
+    <meta name="Connected Devices Assignment" content="Social Alarm Clock">
+    <meta author="Maria Paula Saba/ Jess Jiyoung">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="css/page.css" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+    <script src="js/apigee.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/recorder.js"></script>
+
+  </head>
+
+  <body>
+  <div class="container">
+  
+  <!-- ************** header part **************   -->
+    <div class="header">
+      <img src="img/logo.png" />
+      <h2 id= "clock"></h2>
+    </div>
+    
+  <!-- ************** contents part ************** -->
+  
+  <!-- Default page that users can see without login -->
+
+  <section id="page-login" data-role="page">
+    <div class="jumbotron"> 
+      <div class="description">
+        <div id="space" style= "height: 20px;"></div>
+        <h2>WAKE UP YOUR FRIEND!</h2>
+        <div id="space" style= "height: 20px;"></div>
+        <p class="lead">You can get a voice wake up call from your friend, too!<br/> When would you like to wake up tomorrow?</p>
+      </div>  
+      <ul id="emojiList">
+      </ul>   
+    </div>
+    <div class="buttonbar">
+       <form action="" id="form-login-user" class="" style="">
+          <label for="form-username">Username</label>
+          <input id="form-username" class="input-sm" type="text" placeholder="Enter your username..." /><br/>
+          <label for="form-password">Password</label>
+          <input name="" class="input-sm" id="form-password" placeholder="Enter your password..."></input>
+          <a class="btn btn-sm btn-success" id="btn-submit" role="button">SIGN IN</a>
+          <a class="btn btn-sm btn-success" id="btn-newuser" role="button">CREATE NEW ACCOUNT</a>
+          <p id="login-section-error"></p>
+      </form>    
+    </div>
+  </section>
+  
+  <!-- Main page that users can see after logining in  -->
+  <section id="page-main">
+      <div class="jumbotron">
+      </div> 
+      <div class="row marketing">
+
+        <!-- ////////////A logged user's information////////////////  -->
+
+        <div class="col-lg-6" id="myStatus">
+          <div class="col-in-1" id="user-photo">
+            <div class="circular" style="background: url(http://static3.businessinsider.com/image/5221df9169beddce49072b56/lil-bub-famed-internet-cat-with-dwarfism-gets-a-backstory-in-a-new-book.jpg) no-repeat; background-size:80px 70px;"></div>
+          </div>
+          <div class="col-in-2" id="user-status">
+            <!-- <h4>You are</h4><br/><h1>awaken</h1> -->
+          </div>
+          <div class="col-in-3" id="user-status-emoji">
+            <img class="emoji"/>
+          </div>
+          <div class="col-in-2row" id="user-wakeup-time">
+            <!-- <p>Your next wake-up time is <span id="time">08:40 AM, tomorrow</span></p> -->
+          </div>
+          <!-- <div class="buttonbar"> -->
+            <a class="btn btn-sm btn-success" id="btn-addfriend" role="button">ADD FRIEND</a>
+            <a class="btn btn-sm btn-success" id="btn-setwakeuptime" role="button">SET NEW WAKEUP TIME</a>
+          <!-- </div>   -->
+        </div>
+
+        <!-- //////////// A friends information of the logged user ///////////// -->
+        <div class="col-lg-6" id = "friendStatus">
+          <div class="col-in-1" id="friend-photo">  
+          <div class="circular" style="background: url(http://qph.is.quoracdn.net/main-thumb-4557565-200-WzNDmmeldocBdsuW3FGxoUHaPWo1mLFT.jpeg) no-repeat; background-size:70px 70px;"></div>
+          </div>
+          <div class="col-in-2" id="friend-status">
+            <!-- <h4>Jess is</h4><br/><h1>sleeping</h1> -->
+          </div>
+          <div class="col-in-3" id="friend-status-emoji">
+            <img class="friend-emoji"/>
+            <!-- <img class="emoji" src="img/zzz.png"/> -->
+          </div>
+          <div class="col-in-2row" id="friend-wakeup-time">
+            <!-- <p>You can wake up Jess at <span id="time">1h and 2min after</span></p> -->
+          </div>
+        </div>
+  </section>
+
+<!-- ************** footer part **************   -->
+  <div class="footer">
+      <p>&copy; Jess Jiyoung Jung & Maria Paula Saba </p>
+    </div>
+  </div>
+</body>
+</html>
