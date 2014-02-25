@@ -24,9 +24,14 @@ app.post('/', function (request, response){
 
 });
 
-app.get('/user', function (request, response){
+app.get('/newmessage', function (request, response){
+	//we write the data coming from client. y/n 
 
-	response.sendfile(__dirname + '/index.html');
+});
 
+
+app.get('/wakeup/*', function (request, response){
+	//request.params[0] == y;
+	//timeToWake = request.params[0];
 });
 
