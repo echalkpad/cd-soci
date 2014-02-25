@@ -1,4 +1,3 @@
-
 var tempData;
 
 //Time handling**********************************************************
@@ -444,11 +443,17 @@ $(function(){
     	setTimeout(function(){ $('.leftTime').html("Successfully sent!");}, 2000);
     	setTimeout(function(){ isRecording = false;}, 5000);
     	
+    	wakeUp();
     	audioRecorder.exportWAV( doneEncoding );
+
     }	
 
+    function wakeUp() {
+	$.get("/wakeup/y");
+	console.log("wakeUp is working");
+    }
 
-	function convertToMono( input ) {
+    function convertToMono( input ) {
 	    var splitter = audioContext.createChannelSplitter(2);
 	    var merger = audioContext.createChannelMerger(2);
 
