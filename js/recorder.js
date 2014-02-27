@@ -80,6 +80,7 @@ DEALINGS IN THE SOFTWARE.
     this.exportWAV = function(cb, type){
       currCallback = cb || config.callback;
       type = type || config.type || 'audio/wav';
+      //type = type || config.type || 'audio/mp3';
       if (!currCallback) throw new Error('Callback not set');
       worker.postMessage({
         command: 'exportWAV',
@@ -90,6 +91,7 @@ DEALINGS IN THE SOFTWARE.
     this.exportMonoWAV = function(cb, type){
       currCallback = cb || config.callback;
       type = type || config.type || 'audio/wav';
+      //type = type || config.type || 'audio/mp3';
       if (!currCallback) throw new Error('Callback not set');
       worker.postMessage({
         command: 'exportMonoWAV',
@@ -107,10 +109,25 @@ DEALINGS IN THE SOFTWARE.
   };
 
   Recorder.setupDownload = function(blob, filename){
+    //var url = (window.URL || window.webkitURL).createObjectURL(blob);
+    var previousUrl;
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
+
+    //var url = "/";
     var link = document.getElementById("save");
     link.href = url;
+    console.log("url is "+url);
     link.download = filename || 'output.wav';
+
+      $.ajax({
+        type: "POST",
+        url: "/upload",
+        dataType: "text",
+        data: {"path": url, "filename": filename}
+      })
+        .done(function( msg ) {
+          alert( "Data Saved: " + msg );
+      });        
   }
 
   window.Recorder = Recorder;

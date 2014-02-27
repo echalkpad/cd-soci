@@ -1,3 +1,5 @@
+
+
 var tempData;
 
 //Time handling**********************************************************
@@ -42,7 +44,8 @@ function compareTime(timeObj){
 		leftMinute = Math.abs(leftMinute+1) + "m"; 	
 		leftSecond = currentTime.second + "s";
 		leftString = "passed";
-		leftTimeString = '<h4>'+leftString+' time: <span style="color:#CC2606;">'+leftMinute + " " +leftSecond+'</span></h4>';      	
+		leftTimeString = '<h4>'+leftString+' time: <span style="color:#CC2606;">'+leftMinute + " " +leftSecond+'</span></h4>';
+		$(".alert").html("<h4 style='color: #FFFFFF;'>Jess didn't get up, try again!</h4>");      	
 	}
 
 	if(isTimetowakeup){
@@ -64,6 +67,8 @@ function compareTime(timeObj){
 
 function addRecordButtons(){
 
+	//$("#friend-wakeup-time").append("<form method='POST' action='/upload' enctype='multipart/form-data'><div id='btn-record'></div><div id='btn-stop'></div><div id='btn-play'></div><a id='save' href='#''><input type='submit' class='btn' id='btn-send'></input></a></form>");
+	
 	$("#friend-wakeup-time").append("<div id='btn-record'></div><div id='btn-stop'></div><div id='btn-play'></div><a id='save' href='#''><div id='btn-send'></div></a>");
 	$("#btn-record").append("<img src ='img/record.png' width=70 />");
 	$("#btn-stop").append("<img src ='img/stop.png' width=70 />");
@@ -144,6 +149,7 @@ function setFakeData(){
 
 $(function(){
 
+	tempData = {};
 	setFakeData();
 	//console.log(tempData.wakeupTime);
 
@@ -151,8 +157,7 @@ $(function(){
 	setInterval(updateTime, 1000);
 	var appUser;
 
-	//user api definition ************************************************************** 
-
+	//user api initialization ************************************************************** 
 
 	var client = new Apigee.Client({
 	    orgName: 'JessJJ', // Your Apigee.com username for App Services
@@ -409,8 +414,16 @@ $(function(){
 	}
 
 	function doneEncoding( blob ) {
-	    Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
-	    recIndex++;
+	    //Recorder.setupDownload( blob, "myRecording"+recIndex+".wav");
+	   	//recIndex++;
+	  Recorder.setupDownload( blob, "myRecording.wav");
+	    //var audiourl = (window.URL || window.webkitURL).createObjectURL(blob);
+
+	   //  var filename = "myRecording.wav"; // actual filename of file
+  		// var path = url; //will be put into a temp directory
+  		// var mimeType = "audio/wav"; // image/jpeg or actual mime type
+
+
 	}
 
     function startRecording(){
@@ -438,22 +451,22 @@ $(function(){
     	//Not working yet!!!!!!!!!!!!!!!!!!!!!!
     }
     function sendRecordedVoice(){
+
     	console.log("Double-click the send button!");
     	$('.leftTime').html("Send to your Friend");
     	setTimeout(function(){ $('.leftTime').html("Successfully sent!");}, 2000);
     	setTimeout(function(){ isRecording = false;}, 5000);
-    	
     	wakeUp();
     	audioRecorder.exportWAV( doneEncoding );
 
     }	
 
     function wakeUp() {
-	$.get("/wakeup/y");
-	console.log("wakeUp is working");
-    }
+			$.get("/wakeup/y");
+			console.log("wakeUp is working");
+	}
 
-    function convertToMono( input ) {
+	function convertToMono( input ) {
 	    var splitter = audioContext.createChannelSplitter(2);
 	    var merger = audioContext.createChannelMerger(2);
 
@@ -500,10 +513,10 @@ $(function(){
 	function initAudio() {
 	        if (!navigator.getUserMedia)
 	            navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-	        if (!navigator.cancelAnimationFrame)
-	            navigator.cancelAnimationFrame = navigator.webkitCancelAnimationFrame || navigator.mozCancelAnimationFrame;
-	        if (!navigator.requestAnimationFrame)
-	            navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
+	        // if (!navigator.cancelAnimationFrame)
+	        //     navigator.cancelAnimationFrame = navigator.webkitCancelAnimationFrame || navigator.mozCancelAnimationFrame;
+	        // if (!navigator.requestAnimationFrame)
+	        //     navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
 
 	    navigator.getUserMedia({audio:true}, gotStream, function(e) {
 	            alert('Error getting audio');
