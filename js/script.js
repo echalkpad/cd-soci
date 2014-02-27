@@ -160,8 +160,8 @@ $(function(){
 	//user api initialization ************************************************************** 
 
 	var client = new Apigee.Client({
-	    orgName: 'JessJJ', // Your Apigee.com username for App Services
-	    appName: 'sandbox' // Your Apigee App Services app name
+	    orgName: 'yourorgName', // Your Apigee.com username for App Services
+	    appName: 'yourappName' // Your Apigee App Services app name
 
 	});
 

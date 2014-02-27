@@ -9,8 +9,8 @@ var AWS = require('aws-sdk');
 // var exec = require('child_process').exec;
 
 AWS.config.update({
-  accessKeyId: "AKIAJJHO3IVREX2OVWNA",
-  secretAccessKey: "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"
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY
 });
 
 var s3 = new AWS.S3();
